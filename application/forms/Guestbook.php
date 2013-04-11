@@ -10,9 +10,9 @@ class Application_Form_Guestbook extends Zend_Form
 
         // Add an email element
         $this->addElement('text', 'email', array(
-            'label'      => 'Your email address:',
-            'required'   => true,
-            'filters'    => array('StringTrim'),
+            'label' => 'Your email address:',
+            'required' => true,
+            'filters' => array('StringTrim'),
             'validators' => array(
                 'EmailAddress',
             )
@@ -20,18 +20,19 @@ class Application_Form_Guestbook extends Zend_Form
 
         // Add the comment element
         $this->addElement('textarea', 'comment', array(
-            'label'      => 'Please Comment:',
-            'required'   => true,
+            'label' => 'Please Comment:',
+            'required' => true,
+            'rows' => '7',
             'validators' => array(
                 array('validator' => 'StringLength', 'options' => array(0, 20))
-                )
+            )
         ));
 
         // Add a captcha
         $this->addElement('captcha', 'captcha', array(
-            'label'      => 'Please enter the 5 letters displayed below:',
-            'required'   => true,
-            'captcha'    => array(
+            'label' => 'Please enter the 5 letters displayed below:',
+            'required' => true,
+            'captcha' => array(
                 'captcha' => 'Figlet',
                 'wordLen' => 5,
                 'timeout' => 300
@@ -40,8 +41,8 @@ class Application_Form_Guestbook extends Zend_Form
 
         // Add the submit button
         $this->addElement('submit', 'submit', array(
-            'ignore'   => true,
-            'label'    => 'Sign Guestbook',
+            'ignore' => true,
+            'label' => 'Sign Guestbook',
         ));
 
         // And finally add some CSRF protection
@@ -49,4 +50,5 @@ class Application_Form_Guestbook extends Zend_Form
             'ignore' => true,
         ));
     }
+
 }

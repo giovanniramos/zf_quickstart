@@ -27,7 +27,7 @@ class Application_Model_GuestbookMapper
     public function save(Application_Model_Guestbook $guestbook)
     {
         $data = array(
-            'email'   => $guestbook->getEmail(),
+            'email' => $guestbook->getEmail(),
             'comment' => $guestbook->getComment(),
             'created' => date('Y-m-d H:i:s'),
         );
@@ -48,24 +48,24 @@ class Application_Model_GuestbookMapper
         }
         $row = $result->current();
         $guestbook->setId($row->id)
-                  ->setEmail($row->email)
-                  ->setComment($row->comment)
-                  ->setCreated($row->created);
+        ->setEmail($row->email)
+        ->setComment($row->comment)
+        ->setCreated($row->created);
     }
 
     public function fetchAll()
     {
         $resultSet = $this->getDbTable()->fetchAll();
-        $entries   = array();
+        $entries = array();
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Guestbook();
             $entry->setId($row->id)
-                  ->setEmail($row->email)
-                  ->setComment($row->comment)
-                  ->setCreated($row->created);
+            ->setEmail($row->email)
+            ->setComment($row->comment)
+            ->setCreated($row->created);
             $entries[] = $entry;
         }
         return $entries;
     }
-}
 
+}

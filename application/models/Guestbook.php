@@ -87,5 +87,5 @@ class Application_Model_Guestbook
     {
         return $this->_id;
     }
-}
 
+}
