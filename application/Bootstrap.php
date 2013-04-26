@@ -2,11 +2,14 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+
+    /**
+     * Init Doctype
+     */
     protected function _initDoctype()
     {
-        $this->bootstrap('view');
-        $view = $this->getResource('view');
+        $view = new Zend_View();
         $view->doctype('XHTML1_STRICT');
     }
-}
 
+}

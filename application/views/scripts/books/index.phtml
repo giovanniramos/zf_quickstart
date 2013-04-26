@@ -1,0 +1,14 @@
+<p><a href="<?php echo $this->url(array('controller' => 'books', 'action' => 'save'), 'default', true); ?>">Register a new book</a></p>
+
+Books registered: <br />
+<dl>
+    <?php
+    foreach ($this->entries as $entry):
+        $url = $this->url(array('controller' => 'books', 'action' => 'save', 'id' => $entry->id), 'default', true)
+        ?>
+        <dt><a href="<?php echo $url; ?>"><?php echo $this->escape($entry->title) ?></a> (<?php echo $this->escape($entry->author) ?>)</dt>
+        <dd><?php echo $this->escape($entry->description) ?></dd>
+        <?php
+    endforeach;
+    ?>
+</dl>

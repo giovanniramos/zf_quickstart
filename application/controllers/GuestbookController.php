@@ -21,7 +21,9 @@ class GuestbookController extends Zend_Controller_Action
 
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
-                $comment = new Application_Model_Guestbook($form->getValues());
+                $values = $form->getValues();
+                $values['created'] = date('Y-m-d H:i:s');
+                $comment = new Application_Model_Guestbook($values);
                 $mapper = new Application_Model_GuestbookMapper();
                 $mapper->save($comment);
                 return $this->_helper->redirector('index');
