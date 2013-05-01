@@ -1,3 +1,6 @@
+#---------------------------------
+#  DATABASE guestbook
+#---------------------------------
 CREATE TABLE `guestbook` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`email` VARCHAR(32) NOT NULL DEFAULT 'noemail@test.com',
@@ -13,8 +16,9 @@ INSERT INTO guestbook (email, comment, created) VALUES
     'Hello friends! Welcome to my guestbook',
     NOW());
 
----------------------------------------------
-
+#---------------------------------
+#  DATABASE books
+#---------------------------------
 CREATE TABLE `books` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(100) NOT NULL,
