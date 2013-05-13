@@ -7,6 +7,8 @@ class Application_Form_Guestbook extends Zend_Form
     {
         // Set the method for the display form to POST
         $this->setMethod('post');
+        
+        $this->addElementPrefixPath('App_Decorator', 'App/Decorator', 'decorator');
 
         // Add an email element
         $this->addElement('text', 'email', array(
@@ -28,14 +30,26 @@ class Application_Form_Guestbook extends Zend_Form
             )
         ));
 
+        // BaseURL
+        $baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
+
         // Add a captcha
         $this->addElement('captcha', 'captcha', array(
             'label' => 'Please enter the 5 letters displayed below:',
             'required' => true,
             'captcha' => array(
-                'captcha' => 'Figlet',
+                'captcha' => 'Image',
+                'width' => 130,
+                'height' => 60,
+                'timeout' => 300,
                 'wordLen' => 5,
-                'timeout' => 300
+                'fontSize' => 25,
+                'gcFreq'    => 5,
+                'dotNoiseLevel' => 3,
+                'lineNoiseLevel' => 3,
+                'font' => APPLICATION_PATH . '/../public/captcha/font/arial.ttf',
+                'imgDir' => APPLICATION_PATH . '/../public/captcha/images/',
+                'imgUrl'=>  $baseUrl . '/public/captcha/images/',
             )
         ));
 
