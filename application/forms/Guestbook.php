@@ -7,8 +7,9 @@ class Application_Form_Guestbook extends Zend_Form
     {
         // Set the method for the display form to POST
         $this->setMethod('post');
-        
-        $this->addElementPrefixPath('App_Decorator', 'App/Decorator', 'decorator');
+
+        // Set the App class to the form
+        $this->setAttrib('class', 'app');
 
         // Add an email element
         $this->addElement('text', 'email', array(
@@ -26,7 +27,7 @@ class Application_Form_Guestbook extends Zend_Form
             'required' => true,
             'rows' => '7',
             'validators' => array(
-                array('validator' => 'StringLength', 'options' => array(0, 20))
+                array('validator' => 'StringLength', 'options' => array(0, 140))
             )
         ));
 
@@ -36,20 +37,21 @@ class Application_Form_Guestbook extends Zend_Form
         // Add a captcha
         $this->addElement('captcha', 'captcha', array(
             'label' => 'Please enter the 5 letters displayed below:',
+            'placeholder' => 'Enter code here',
             'required' => true,
             'captcha' => array(
                 'captcha' => 'Image',
                 'width' => 130,
-                'height' => 60,
+                'height' => 24,
                 'timeout' => 300,
+                'gcFreq' => 5,
                 'wordLen' => 5,
-                'fontSize' => 25,
-                'gcFreq'    => 5,
-                'dotNoiseLevel' => 3,
-                'lineNoiseLevel' => 3,
+                'fontSize' => 14,
+                'dotNoiseLevel' => 0,
+                'lineNoiseLevel' => 2,
                 'font' => APPLICATION_PATH . '/../public/captcha/font/arial.ttf',
                 'imgDir' => APPLICATION_PATH . '/../public/captcha/images/',
-                'imgUrl'=>  $baseUrl . '/public/captcha/images/',
+                'imgUrl' => $baseUrl . '/public/captcha/images/',
             )
         ));
 
@@ -63,6 +65,10 @@ class Application_Form_Guestbook extends Zend_Form
         $this->addElement('hash', 'csrf', array(
             'ignore' => true,
         ));
+
+        // Applying decoration for all elements
+        $this->addElementPrefixPath('App_Form_Decorator', 'App/Form/Decorator', 'decorator');
+        $this->setElementDecorators(array('Composite'));
     }
 
 }

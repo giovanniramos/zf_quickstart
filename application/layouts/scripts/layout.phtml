@@ -13,17 +13,6 @@ echo $this->doctype();
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Zend Framework Quickstart Application</title>
         <?php echo $this->headLink()->appendStylesheet($this->baseUrl('/assets/css/screen.css')); ?>
-        <style>
-            body { color: #444; background-color: #FFF; font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin: 0 auto; padding: 0; line-height: 20px; }
-            a:link, a:visited { color: #0398CA; }
-            #container { padding: 20px; }
-            #container h1 { font-size: 24px; font-weight: 300; border-left: 8px solid #80B600; padding: 20px; }
-            #header { position: relative; color: #FFF; background-color: #393939; height: 40px; }
-            #header-logo { position: absolute; top: 10px; left: 10px; }
-            #header-nav { position: absolute; top: 10px; left: 300px; }
-            #header-nav a { color: #FFF; background-color: #80B600; font-weight: bold; text-decoration: none; padding: 6px 10px; margin: 0 2px; }
-            #header-nav a:hover { background-color: #93D001; }
-        </style>
     </head>
     <body>
         <div id="header">
@@ -31,7 +20,7 @@ echo $this->doctype();
                 <strong>ZF Quickstart Application</strong>
             </div>
             <div id="header-nav">
-                <a href="<?php echo $this->url(array('controller' => 'index'), 'default', true); ?>">Main page</a> 
+                <a href="<?php echo $this->url(array('controller' => 'index'), 'default', true); ?>" class="active">Main page</a> 
                 <a href="<?php echo $this->url(array('controller' => 'guestbook'), 'default', true); ?>" class="button">Guestbook</a> 
             </div>
         </div>

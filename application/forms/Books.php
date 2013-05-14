@@ -6,7 +6,10 @@ class Application_Form_Books extends Zend_Form
     public function init()
     {
         // Set the method for the display form to POST
-        $this->setMethod('post');
+        $this->setMethod('POST');
+
+        // Set the App class to the form
+        $this->setAttrib('class', 'app');
 
         // Added a hidden field for Id 
         $this->addElement('hidden', 'id');
@@ -53,6 +56,10 @@ class Application_Form_Books extends Zend_Form
         $this->addElement('hash', 'csrf', array(
             'ignore' => true,
         ));
+ 
+        // Applying decoration for all elements
+        $this->addElementPrefixPath('App_Form_Decorator', 'App/Form/Decorator', 'decorator');
+        $this->setElementDecorators(array('Composite'));
     }
 
 }

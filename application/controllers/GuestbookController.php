@@ -11,7 +11,9 @@ class GuestbookController extends Zend_Controller_Action
     public function indexAction()
     {
         $guestbook = new Application_Model_GuestbookMapper();
-        $this->view->entries = $guestbook->fetchAll();
+        $entries = $guestbook->fetchAll();
+        $entries = array_reverse($entries);
+        $this->view->entries = $entries;
     }
 
     public function signAction()
