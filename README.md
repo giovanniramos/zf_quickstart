@@ -17,3 +17,6 @@ To learn more about the latest version of Zend Framework Quick Start, visit the 
 **Git clone**
 
     git clone git@github.com:giovanniramos/zf_quickstart.git
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/giovanniramos/zf_quickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
